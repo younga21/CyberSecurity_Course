@@ -4,7 +4,7 @@ This repository is a lab overview of my Azure Cloud Project created for Michigan
 
 ### Contents
 ----
-- Azure
+- Project Diagram
 - Docker
 - Ansible
 
@@ -12,9 +12,54 @@ This repository is a lab overview of my Azure Cloud Project created for Michigan
 
 The diagram below is a map of the Azure environment I have created, detailing the virtual machines and protocols used to access them. It also notes the DVWA image is being used within an Ansible container. 
 
-![](Diagrams/azure-diagram.PNG)
+![](Diagrams/azure-red-diagram.PNG)
 
+The diagram below maps the additions of the ELK_Net2 peering to the RedNet3. 
 
+![](Diagrams/azure-purple-diagram.PNG)
+
+## Docker
+    + Commands to install docker onto system, pull an ansible image, and interact with docker containers created
+```bash
+#install docker
+sudo apt install docker.io
+
+#make sure docker is running
+sudo systemctl status docker
+
+#pull the latest image for a container
+sudo docker pull cyberxsecurity/ansible:latest
+
+#to create the container;
+#-t start, -i interact
+sudo docker run -ti cyberxsecurity/ansible:latest
+
+#list all created containers
+#-a all
+sudo docker container list -a
+
+#remove any extra containers 
+sudo docker rm <container id>
+
+#start and interact with the desired container: 
+sudo docker start -ai <container id>
+
+#To ensure ansible is able to connect to VMs 
+ansible -m ping --all
+
+# run a container inside of a running container with a bash session
+sudo docker exec -it <container name> bash
+
+#Within Container, SSH to web servers created in Azure using server log in and ip
+ssh username@privateip
+
+#To run a playbook in ansible
+nano file_name
+ansible-playbook file_name
+
+#or try this to run the playbook
+ansible-playbook --key-file ~/.ssh/private_key file.yml
+```
 ## Ansible
 
 Here you will find the scripts to set up Filebeat along with , Metricbeat, and install ELK and the DVWA image along with the updated host configuration and ansible configuration files.
@@ -257,5 +302,5 @@ output.elasticsearch:
       enabled: true
 ```
 
-## Linux
+
 
