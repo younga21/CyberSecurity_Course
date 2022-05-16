@@ -10,7 +10,7 @@ This repository is a lab overview of my Azure Cloud Project created for Michigan
 
 ## Project Diagram 
 
-The diagram below is a map of the Azure environment I have created, detailing the virtual machines and protocols used to access them. It also notes the DVWA image is being used within an Ansible container. 
+The diagram below is a map of the Azure environment I have created, detailing the virtual machines and protocols used to access them. It also notes how the DVWA image is being used within ansible. 
 
 ![](Diagrams/azure-red-diagram.PNG)
 
@@ -19,7 +19,7 @@ The diagram below maps the additions of the ELK_Net2 peering to the RedNet3.
 ![](Diagrams/azure-purple-diagram.PNG)
 
 ## Docker
-    + Commands to install docker onto system, pull an ansible image, and interact with docker containers created
+    + Commands to install docker onto system, pull an ansible image, and interact with the docker containers created.
 ```bash
 #install docker
 sudo apt install docker.io
