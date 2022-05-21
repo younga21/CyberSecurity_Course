@@ -4,7 +4,7 @@ This repository is a lab overview of my Azure Cloud Project created for Michigan
 
 ### Contents
 ----
-- [Project Diagram](Project Diagram)
+- [Project Diagram](#project-diagram)
 - Docker
 - Ansible
 
