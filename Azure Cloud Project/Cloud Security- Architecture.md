@@ -1,4 +1,4 @@
-#Azure-Cloud Security Project
+# Azure-Cloud Security Project
 
 ### **Day 1**
 #### Checklist 
