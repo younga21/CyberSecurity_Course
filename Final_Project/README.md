@@ -1,4 +1,4 @@
-#Final Project 
+# Final Project 
 
 Network Toplogy
 ![](final-project-setup.png)
@@ -29,19 +29,25 @@ The following machines were identified on the network:
 
 Name of VM 1
 Kali
+
 Operating System:
 Linux
+
 Purpose:
 Attack Machine
+
 IP Address:
 192.168.1.90
 
 Name of VM 2
 Capstone
+
 Operating System:
 Linux
+
 Purpose:
 Test Machine
+
 IP Address:
 192.168.1.105
 
