@@ -1,15 +1,15 @@
 #Final Project 
 
 Network Toplogy
-![](final-project-setup.png)
+![](Images/final-project-setup.png)
 
 Alerts Created
 
 Thresholds Set
-![](HTTP_Request_Size_Alert.PNG)
-![](Excessive_Http_Alert.PNG)
-![](CPU_Alert.PNG)
-![](GET_Request_Alert.PNG)
+![](Images/HTTP_Request_Size_Alert.PNG)
+![](Images/Excessive_Http_Alert.PNG)
+![](Images/Images/CPU_Alert.PNG)
+![](Images/GET_Request_Alert.PNG)
 
 
 # Blue Team: Summary of Operations
@@ -152,7 +152,7 @@ Nmap scan results for each machine reveal the below services and OS details:
 
 $ nmap -sS -sV -T4 192.168.1.110 
 
-![](target1_nmap_results.PNG)
+![](Images/target1_nmap_results.PNG)
 
 This scan identifies the services below as potential points of entry:
 
@@ -197,9 +197,9 @@ TODO: Include the command run
 
 flag2.txt: TODO: Insert flag2.txt hash value
 
-![](flag2.PNG)
+![](Images/flag2.PNG)
 
-![](cat_flag2.PNG)
+![](Images/cat_flag2.PNG)
 
 
 Exploit Used
