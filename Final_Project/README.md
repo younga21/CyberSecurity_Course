@@ -24,26 +24,31 @@ Suggestions for Going Further
 
 
 Network Topology
-TODO: Fill out the information below.
 The following machines were identified on the network:
 
-Name of VM 1
-Kali
-Operating System:
-Linux
-Purpose:
-Attack Machine
-IP Address:
-192.168.1.90
+### Name of VM 1
+`Kali`
 
-Name of VM 2
-Capstone
 Operating System:
-Linux
+`Linux`
+
 Purpose:
-Test Machine
+`Attack Machine`
+
 IP Address:
-192.168.1.105
+`192.168.1.90`
+
+### Name of VM 2
+`Capstone`
+
+Operating System:
+`Linux`
+
+Purpose:
+`Test Machine`
+
+IP Address:
+`192.168.1.105`
 
 Etc.
 
@@ -191,6 +196,10 @@ TODO: Include the command run
 
 
 flag2.txt: TODO: Insert flag2.txt hash value
+
+![](flag2.PNG)
+
+![](cat_flag2.PNG)
 
 
 Exploit Used
