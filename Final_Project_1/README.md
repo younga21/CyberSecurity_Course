@@ -8,7 +8,7 @@ Alerts Created
 Thresholds Set
 ![](Images/HTTP_Request_Size_Alert.PNG)
 ![](Images/Excessive_Http_Alert.PNG)
-![](Images/Images/CPU_Alert.PNG)
+![](Images/CPU_Alert.PNG)
 ![](Images/GET_Request_Alert.PNG)
 
 
@@ -163,7 +163,7 @@ Target 1
 | 80/tcp | http           | Apache httpd 2.4.10 ((Debian)) |  
 
 
-TODO: Fill out the list below. Include severity, and CVE numbers, if possible.
+Fill out the list below. Include severity, and CVE numbers, if possible.
 The following vulnerabilities were identified on each target:
 
 Target 1
@@ -171,12 +171,27 @@ Target 1
 List of
 Critical
 Vulnerabilities
+Critical Vulnerabilities: Target 1
 
-- Michael's weak password- We were able to crack it
-- The network is discoverable with Nmap.
-- User database is human readable.
-- SSH is an open port on the network.
+Our assessment uncovered the following critical vulnerabilities in Target 1.
 
+
+ Vulnerability
+Description
+Impact
+- Security 
+Misconfiguration
+Nmap was used to discover open ports, and wpscan was used to find users in the system
+Ability to discover open ports and usernames gives attacker free reign to tailor specific attacks
+- Cryptographic Failures
+There was a file on the system that contained the login information for the mysql database in clear text
+Not only was the database accessed, but important files were able to be downloaded using the provided password.
+- Identification and Authentication Failures
+A user was using a weak password which was able to be easily obtained through guessing
+Correctly guessed password gave the threat actor the ability to ssh into the system.
+- Broken Access Control
+When configuring Steven’s account, the principle of least privilege was not implemented correctly.
+Threat actor was able to perform privilege escalation with sudo python command. 
 
 Exploitation
 Fill out the details below. Include screenshots where possible.
@@ -194,6 +209,10 @@ Located username, password and hostname from the database.
 Found users and their password hashes.
 ![](Images/wp_database_users.PNG)
 
+Michael and Steven's hashes were able cracked!
+![](Images/cracking_michael.PNG)
+
+![](Images/cracking_steven_pass.jpg)
 The Red Team was able to penetrate Target 1 and retrieve the following confidential data:
 
 Target 1
