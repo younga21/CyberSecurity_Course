@@ -1,17 +1,15 @@
-# Final Project 
+#Final Project 
 
 Network Toplogy
-
-![](final-project-setup.png)
+![](Images/final-project-setup.png)
 
 Alerts Created
 
 Thresholds Set
-
-![](HTTP_Request_Size_Alert.PNG)
-![](Excessive_Http_Alert.PNG)
-![](CPU_Alert.PNG)
-![](GET_Request_Alert.PNG)
+![](Images/HTTP_Request_Size_Alert.PNG)
+![](Images/Excessive_Http_Alert.PNG)
+![](Images/Images/CPU_Alert.PNG)
+![](Images/GET_Request_Alert.PNG)
 
 
 # Blue Team: Summary of Operations
@@ -26,32 +24,31 @@ Suggestions for Going Further
 
 
 Network Topology
-TODO: Fill out the information below.
 The following machines were identified on the network:
 
-Name of VM 1
-Kali
+### Name of VM 1
+`Kali`
 
 Operating System:
-Linux
+`Linux`
 
 Purpose:
-Attack Machine
+`Attack Machine`
 
 IP Address:
-192.168.1.90
+`192.168.1.90`
 
-Name of VM 2
-Capstone
+### Name of VM 2
+`Capstone`
 
 Operating System:
-Linux
+`Linux`
 
 Purpose:
-Test Machine
+`Test Machine`
 
 IP Address:
-192.168.1.105
+`192.168.1.105`
 
 Etc.
 
@@ -155,7 +152,7 @@ Nmap scan results for each machine reveal the below services and OS details:
 
 $ nmap -sS -sV -T4 192.168.1.110 
 
-![](target1_nmap_results.PNG)
+![](Images/target1_nmap_results.PNG)
 
 This scan identifies the services below as potential points of entry:
 
@@ -175,33 +172,94 @@ List of
 Critical
 Vulnerabilities
 
+- Michael's weak password- We were able to crack it
+- The network is discoverable with Nmap.
+- User database is human readable.
+- SSH is an open port on the network.
 
-
-TODO: Include vulnerability scan results to prove the identified vulnerabilities.
 
 Exploitation
 TODO: Fill out the details below. Include screenshots where possible.
+### Nmap Scan Results
+ ![](Images/target1_nmap_results.PNG)
+
+### Wordpress
+
+Accessed mySQL database for RavenSecurity.
+![](Images/wordpress_databases.PNG)
+
+Located username, password and hostname from the database.
+![](Images/wordpress_databases_login.PNG)
+
+Found users and their password hashes.
+![](Images/wp_database_users.PNG)
+
 The Red Team was able to penetrate Target 1 and retrieve the following confidential data:
 
 Target 1
 
 
-flag1.txt: TODO: Insert flag1.txt hash value
+flag1.txt:
+
+![](Images/flag1.PNG)
+Exploit Used
+
+User has read priviledges to the /var/www/html directory. If we assume the flag is sensitive data, the file should have stricture rules. Or user should not have access to root. 
+Command: cat service.html | grep flag1
+
+
+flag2.txt:
+
+![](Images/flag2.PNG)
+
+![](Images/cat_flag2.PNG)
 
 
 Exploit Used
 
-TODO: Identify the exploit used
-TODO: Include the command run
+User has read priviledges to the /var/www directory. If we assume the flag is sensitive data, the file should have stricture rules. Or user should not have access to root. 
+Command: cd /var/www | cat flag2.txt
 
+flag4.txt:
 
-
-
-
-flag2.txt: TODO: Insert flag2.txt hash value
-
+![](Images/flag4.PNG)
 
 Exploit Used
 
-TODO: Identify the exploit used
-TODO: Include the command run
+User was able to achieve root access. This data was saved to root's home directory. 
+
+## Network Analysis
+Time Thieves
+At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
+They have set up an Active Directory network.
+They are constantly watching videos on YouTube.
+Their IP addresses are somewhere in the range 10.6.12.0/24.
+You must inspect your traffic capture to answer the following questions:
+What is the domain name of the users' custom site?
+ 
+What is the IP address of the Domain Controller (DC) of the AD network?
+ 
+What is the name of the malware downloaded to the 10.6.12.203 machine? Once you have found the file, export it to your Kali machine's desktop.
+ 
+Upload the file to VirusTotal.com. What kind of malware is this classified as?
+ 
+ 
+ 
+Vulnerable Windows Machines
+The Security team received reports of an infected Windows host on the network. They know the following:
+Machines in the network live in the range 172.16.4.0/24.
+The domain mind-hammer.net is associated with the infected computer.
+The DC for this network lives at 172.16.4.4 and is named Mind-Hammer-DC.
+The network has standard gateway and broadcast addresses.
+Inspect your traffic to answer the following questions:
+Find the following information about the infected Windows machine:
+Host name:
+IP address:
+MAC address:
+
+What is the username of the Windows user whose computer is infected?
+ 
+What are the IP addresses used in the actual infection traffic?
+ 
+As a bonus, retrieve the desktop background of the Windows host.
+ 
