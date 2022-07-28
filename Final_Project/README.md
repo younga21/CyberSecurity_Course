@@ -179,7 +179,7 @@ Vulnerabilities
 
 
 Exploitation
-TODO: Fill out the details below. Include screenshots where possible.
+Fill out the details below. Include screenshots where possible.
 ### Nmap Scan Results
  ![](Images/target1_nmap_results.PNG)
 
