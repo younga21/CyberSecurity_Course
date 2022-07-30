@@ -198,23 +198,29 @@ Threat actor was able to perform privilege escalation with sudo python command.
 Exploitation
 Fill out the details below. Include screenshots where possible.
 ### Nmap Scan Results
+
  ![](Images/target1_nmap_results.PNG)
 
 ### Wordpress
 
 Accessed mySQL database for RavenSecurity.
+
 ![](Images/wordpress_databases.PNG)
 
 Located username, password and hostname from the database.
+
 ![](Images/wordpress_databases_login.PNG)
 
 Found users and their password hashes.
+
 ![](Images/wp_database_users.PNG)
 
 Michael and Steven's hashes were able cracked!
+
 ![](Images/cracking_michael.PNG)
 
 ![](Images/cracking_steven_pass.jpg)
+
 The Red Team was able to penetrate Target 1 and retrieve the following confidential data:
 
 Target 1
@@ -223,6 +229,8 @@ Target 1
 flag1.txt:
 
 ![](Images/flag1.PNG)
+
+
 Exploit Used
 
 User has read priviledges to the /var/www/html directory. If we assume the flag is sensitive data, the file should have stricture rules. Or user should not have access to root. 
