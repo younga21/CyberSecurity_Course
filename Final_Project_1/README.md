@@ -3,14 +3,6 @@
 Network Toplogy
 ![](Images/final-project-setup.png)
 
-Alerts Created
-
-Thresholds Set
-![](Images/HTTP_Request_Size_Alert.PNG)
-![](Images/Excessive_Http_Alert.PNG)
-![](Images/CPU_Alert.PNG)
-![](Images/GET_Request_Alert.PNG)
-
 
 # Blue Team: Summary of Operations
 
@@ -54,21 +46,31 @@ Etc.
 
 
 Description of Targets
-TODO: Answer the questions below.
-The target of this attack was: Target 1 (TODO: IP Address).
+Answer the questions below.
+The target of this attack was: Target 1 (`192.168.1.110`).
 Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
+
+Thresholds Set
+
+![](Images/HTTP_Request_Size_Alert.PNG)
+
+![](Images/Excessive_Http_Alert.PNG)
+
+![](Images/CPU_Alert.PNG)
+
+![](Images/GET_Request_Alert.PNG)
 
 Monitoring the Targets
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
 Name of Alert 1
 TODO: Replace Alert 1 with the name of the alert.
-Alert 1 is implemented as follows:
+HTTP Request Size Monitor is implemented as follows:
 
 
-Metric: TODO
+Metric: All HTTP documents
 
-Threshold: TODO
+Threshold: 3500 requests per 5 minutes 
 
 Vulnerability Mitigated: TODO
 
