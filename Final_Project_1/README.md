@@ -60,32 +60,27 @@ Thresholds Set
 
 ![](Images/GET_Request_Alert.PNG)
 
-Monitoring the Targets
+### Monitoring the Targets
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-Name of Alert 1
-TODO: Replace Alert 1 with the name of the alert.
-HTTP Request Size Monitor is implemented as follows:
+Alert 1: `HTTP Request Size Monitor` is implemented as follows:
+
+Metric: `All HTTP documents`
+
+Threshold: `3500 requests per 1 minutes `
+
+Vulnerability Mitigated: `Repeat request byte sizes, mitigating scans that happen quicker that human capabilities to reduce risk of sensitive data exposure.`
+
+Reliability: `Low; Possibility for false positives/false negatives. This threshold is low and would alert very often.`
 
 
-Metric: All HTTP documents
+Alert 2: `Excessive HTTP Errors`is implemented as follows:
 
-Threshold: 3500 requests per 5 minutes 
+Metric: `http.response.status_code`
 
-Vulnerability Mitigated: TODO
+Threshold: `400 errors per 5 minutes`
 
-Reliability: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
-
-
-Name of Alert 2
-Alert 2 is implemented as follows:
-
-
-Metric: TODO
-
-Threshold: TODO
-
-Vulnerability Mitigated: TODO
+Vulnerability Mitigated: ``
 
 Reliability: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
