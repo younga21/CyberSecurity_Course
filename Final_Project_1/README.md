@@ -1,10 +1,10 @@
-#Final Project 
+# Final Project 
 
 Network Toplogy
 ![](Images/final-project-setup.png)
 
 
-# Blue Team: Summary of Operations
+## Blue Team: Summary of Operations
 
 Table of Contents
 
@@ -47,10 +47,11 @@ Etc.
 
 Description of Targets
 Answer the questions below.
-The target of this attack was: Target 1 (`192.168.1.110`).
-Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
 
-Thresholds Set
+The target of this attack was: 
+Target 1 (`192.168.1.110`). Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. 
+
+As such, the following alerts have been implemented:
 
 ![](Images/HTTP_Request_Size_Alert.PNG)
 
@@ -59,6 +60,8 @@ Thresholds Set
 ![](Images/CPU_Alert.PNG)
 
 ![](Images/GET_Request_Alert.PNG)
+
+-------
 
 ### Monitoring the Targets
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
@@ -80,61 +83,23 @@ Metric: `http.response.status_code`
 
 Threshold: `400 errors per 5 minutes`
 
-Vulnerability Mitigated: ``
+Vulnerability Mitigated: `Ports scans used to map out which are open or closed to reduce server-side request forgery.`
 
-Reliability: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+Reliability: `Medium/High; Low possibility for false positives/false negatives. Since there are limited ports open on the server to trigger the alert, there would be many accurate alerts.`
 
+`CPU Usage Monitor` is implemented as follows:
 
-Name of Alert 3
-Alert 3 is implemented as follows:
+Metric: `system.process.cpu.total.pct`
 
+Threshold: `.5`
 
-Metric: TODO
+Vulnerability Mitigated: `Resource exhaustion to avoid risk of DoS attack.`
 
-Threshold: TODO
+Reliability: `Low; Possibility for false positives/false negatives. CPU usage can ramp up for a multitude of reasons, including updates or high usage software.`
 
-Vulnerability Mitigated: TODO
+----
 
-Reliability: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
-
-TODO Note: Explain at least 3 alerts. Add more if time allows.
-
-Suggestions for Going Further (Optional)
-TODO:
-
-Each alert above pertains to a specific vulnerability/exploit. Recall that alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, suggest a patch. E.g., implementing a blocklist is an effective tactic against brute-force attacks. It is not necessary to explain how to implement each patch.
-
-The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
-
-Vulnerability 1
-
-
-Patch: TODO: E.g., install special-security-package with apt-get
-
-
-Why It Works: TODO: E.g., special-security-package scans the system for viruses every day
-
-
-
-Vulnerability 2
-
-
-Patch: TODO: E.g., install special-security-package with apt-get
-
-
-Why It Works: TODO: E.g., special-security-package scans the system for viruses every day
-
-
-
-Vulnerability 3
-
-
-Patch: TODO: E.g., install special-security-package with apt-get
-
-
-Why It Works: TODO: E.g., special-security-package scans the system for viruses every day
-
-# Red Team: Summary of Operations
+## Red Team: Summary of Operations
 
 Table of Contents
 
@@ -159,39 +124,23 @@ Target 1
 | 22/tcp | ssh            | OpenSSH 6.7p1 Debian 5+deb8u4 |
 | 80/tcp | http           | Apache httpd 2.4.10 ((Debian)) |  
 
+-----
 
-Fill out the list below. Include severity, and CVE numbers, if possible.
-The following vulnerabilities were identified on each target:
+### List of Critical Vulnerabilities
 
-Target 1
-
-List of
-Critical
-Vulnerabilities
 Critical Vulnerabilities: Target 1
 
 Our assessment uncovered the following critical vulnerabilities in Target 1.
 
+| Vulnerability| Description | Impact |
+|--------------|--------|--------------|
+| Security Misconfiguration | Nmap was used to discover open ports, and wpscan was used to find users in the system | Ability to discover open ports and usernames gives attacker free reign to tailor specific attacks |
+| Cryptographic Failures | There was a file on the system that contained the login information for the mysql database in clear text | Not only was the database accessed, but important files were able to be downloaded using the provided password. |
+| Identification and Authentication Failures | A user was using a weak password which was able to be easily obtained through guessing | Correctly guessed password gave the threat actor the ability to ssh into the system. |
+| Broken Access Control | When configuring Steven’s account, the principle of least privilege was not implemented correctly. | Threat actor was able to perform privilege escalation with sudo python command. |
 
- Vulnerability
-Description
-Impact
-- Security 
-Misconfiguration
-Nmap was used to discover open ports, and wpscan was used to find users in the system
-Ability to discover open ports and usernames gives attacker free reign to tailor specific attacks
-- Cryptographic Failures
-There was a file on the system that contained the login information for the mysql database in clear text
-Not only was the database accessed, but important files were able to be downloaded using the provided password.
-- Identification and Authentication Failures
-A user was using a weak password which was able to be easily obtained through guessing
-Correctly guessed password gave the threat actor the ability to ssh into the system.
-- Broken Access Control
-When configuring Steven’s account, the principle of least privilege was not implemented correctly.
-Threat actor was able to perform privilege escalation with sudo python command. 
+## Exploitation
 
-Exploitation
-Fill out the details below. Include screenshots where possible.
 ### Nmap Scan Results
 
  ![](Images/target1_nmap_results.PNG)
@@ -229,8 +178,11 @@ flag1.txt:
 Exploit Used
 
 User has read priviledges to the /var/www/html directory. If we assume the flag is sensitive data, the file should have stricture rules. Or user should not have access to root. 
-Command: cat service.html | grep flag1
 
+Command:
+```bash
+cat service.html | grep flag1
+```
 
 flag2.txt:
 
@@ -242,8 +194,11 @@ flag2.txt:
 Exploit Used
 
 User has read priviledges to the /var/www directory. If we assume the flag is sensitive data, the file should have stricture rules. Or user should not have access to root. 
-Command: cd /var/www | cat flag2.txt
 
+Command: 
+```bash 
+cd /var/www | cat flag2.txt 
+```
 flag4.txt:
 
 ![](Images/flag4.PNG)
@@ -252,38 +207,80 @@ Exploit Used
 
 User was able to achieve root access. This data was saved to root's home directory. 
 
+Command:
+
+        sudo python -c 'import pyt;pty.spawn("/bin/bash")'
+        cd ~
+        cat flag4.txt
+
+--------
 ## Network Analysis
+
 Time Thieves
+
 At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
 They have set up an Active Directory network.
 They are constantly watching videos on YouTube.
 Their IP addresses are somewhere in the range 10.6.12.0/24.
 You must inspect your traffic capture to answer the following questions:
 What is the domain name of the users' custom site?
- 
+
+` DC.Frank-n-Ted.com`
+
+`10.6.12.203`
+
+![](Images/dc_filter.PNG)
+
+![](Images/custom_dc.PNG)
+
+
 What is the IP address of the Domain Controller (DC) of the AD network?
- 
-What is the name of the malware downloaded to the 10.6.12.203 machine? Once you have found the file, export it to your Kali machine's desktop.
- 
+
+`10.6.12.12`
+
+![](Images/dc_ip.PNG)
+
+What is the name of the malware downloaded to the 10.6.12.203 machine? 
+
+`june11.dll`
+
+![](Images/malware_download.PNG)
+
+Once you have found the file, export it to your Kali machine's desktop.
+
 Upload the file to VirusTotal.com. What kind of malware is this classified as?
- 
- 
- 
+
+`Trojan Horse`
+
+![](Images/trojan_horse.PNG)
+
 Vulnerable Windows Machines
 The Security team received reports of an infected Windows host on the network. They know the following:
 Machines in the network live in the range 172.16.4.0/24.
 The domain mind-hammer.net is associated with the infected computer.
 The DC for this network lives at 172.16.4.4 and is named Mind-Hammer-DC.
 The network has standard gateway and broadcast addresses.
+
 Inspect your traffic to answer the following questions:
 Find the following information about the infected Windows machine:
-Host name:
-IP address:
-MAC address:
+
+Host name: `Rotterdam-PC`
+
+IP address: `172.16.4.205`
+
+MAC address: `00:59:07:b0:63:a4`
 
 What is the username of the Windows user whose computer is infected?
- 
+
+`matthijs.devries`
+
+![](Images/username2.PNG)
+
 What are the IP addresses used in the actual infection traffic?
- 
-As a bonus, retrieve the desktop background of the Windows host.
- 
+
+`185.243.115.84`
+
+`166.62.111.64`
+
+![](Images/infected_ip.PNG)
+![](Images/infected_ip2.PNG)
