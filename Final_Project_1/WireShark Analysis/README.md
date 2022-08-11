@@ -1,5 +1,7 @@
-Network Analysis
-Time Thieves
+## Network Analysis
+
+### Time Thieves
+
 At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
 They have set up an Active Directory network.
 They are constantly watching videos on YouTube.
@@ -7,20 +9,23 @@ Their IP addresses are somewhere in the range 10.6.12.0/24.
 You must inspect your traffic capture to answer the following questions:
 What is the domain name of the users' custom site?
 
-`10.6.12.157 DC.Frank-n-Ted.com
-10.6.12.203`
+`10.6.12.203 DC.Frank-n-Ted.com`
+
 ![](dc_filter.PNG)
+
 ![](custom_dc.PNG)
 
  
 What is the IP address of the Domain Controller (DC) of the AD network?
 
 `10.6.12.12`
+
 ![](dc_ip.PNG)
  
 What is the name of the malware downloaded to the 10.6.12.203 machine? 
 
 `june11.dll`
+
 ![](malware_download.PNG)
 
 Once you have found the file, export it to your Kali machine's desktop.
@@ -28,6 +33,7 @@ Once you have found the file, export it to your Kali machine's desktop.
 Upload the file to VirusTotal.com. What kind of malware is this classified as?
  
 `Trojan Horse`
+
  ![](trojan_horse.PNG)
  
 Vulnerable Windows Machines
@@ -46,11 +52,15 @@ MAC address: `00:59:07:b0:63:a4`
 What is the username of the Windows user whose computer is infected?
 
 `matthijs.devries`
+
 ![](username2.PNG)
 
 What are the IP addresses used in the actual infection traffic?
+
 185.243.115.84
+
 166.62.111.64
+
  ![](infected_ip.PNG)
 ![](infected_ip2.PNG)
 

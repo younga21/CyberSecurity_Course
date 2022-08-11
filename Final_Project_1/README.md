@@ -68,36 +68,36 @@ As such, the following alerts have been implemented:
 ### Monitoring the Targets
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-Alert 1: `HTTP Request Size Monitor` is implemented as follows:
+-  `HTTP Request Size Monitor` is implemented as follows:
 
-Metric: `All HTTP documents`
+        Metric: `All HTTP documents`
 
-Threshold: `3500 requests per 1 minutes `
+        Threshold: `3500 requests per 1 minutes `
 
-Vulnerability Mitigated: `Repeat request byte sizes, mitigating scans that happen quicker that human capabilities to reduce risk of sensitive data exposure.`
+        Vulnerability Mitigated: `Repeat request byte sizes, mitigating scans that happen quicker that human capabilities to reduce risk of sensitive data exposure.`
 
-Reliability: `Low; Possibility for false positives/false negatives. This threshold is low and would alert very often.`
+        Reliability: `Low; Possibility for false positives/false negatives. This threshold is low and would alert very often.`
 
 
-Alert 2: `Excessive HTTP Errors`is implemented as follows:
+- `Excessive HTTP Errors`is implemented as follows:
 
-Metric: `http.response.status_code`
+        Metric: `http.response.status_code`
 
-Threshold: `400 errors per 5 minutes`
+        Threshold: `400 errors per 5 minutes`
 
-Vulnerability Mitigated: `Ports scans used to map out which are open or closed to reduce server-side request forgery.`
+        Vulnerability Mitigated: `Ports scans used to map out which are open or closed to reduce server-side request forgery.`
 
-Reliability: `Medium/High; Low possibility for false positives/false negatives. Since there are limited ports open on the server to trigger the alert, there would be many accurate alerts.`
+        Reliability: `Medium/High; Low possibility for false positives/false negatives. Since there are limited ports open on the server to trigger the alert, there would be many accurate alerts.`
 
-`CPU Usage Monitor` is implemented as follows:
+- `CPU Usage Monitor` is implemented as follows:
 
-Metric: `system.process.cpu.total.pct`
+        Metric: `system.process.cpu.total.pct`
 
-Threshold: `.5`
+        Threshold: `.5`
 
-Vulnerability Mitigated: `Resource exhaustion to avoid risk of DoS attack.`
+        Vulnerability Mitigated: `Resource exhaustion to avoid risk of DoS attack.`
 
-Reliability: `Low; Possibility for false positives/false negatives. CPU usage can ramp up for a multitude of reasons, including updates or high usage software.`
+        Reliability: `Low; Possibility for false positives/false negatives. CPU usage can ramp up for a multitude of reasons, including updates or high usage software.`
 
 ----
 
@@ -111,7 +111,6 @@ Exploitation
 
 
 Exposed Services
-TODO: Fill out the information below.
 Nmap scan results for each machine reveal the below services and OS details:
 
 $ nmap -sS -sV -T4 192.168.1.110 
@@ -217,7 +216,7 @@ Command:
 --------
 ## Network Analysis
 
-Time Thieves
+### Time Thieves
 
 At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
 They have set up an Active Directory network.
